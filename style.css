@@ -17,7 +17,7 @@ html{
     text-align: center; 
     border-style: solid;
     border-color: rgb(83, 12, 12);
-    border-width: 5px;
+    border-width: 8px;
     
 }
 .display
@@ -53,6 +53,7 @@ button
     border: none;
     margin: 2px;
     text-align: center;
+    
 }
 .zero
 {
@@ -70,4 +71,7 @@ button
 {
     background-color: rgb(35, 102, 80);
     color: white;
+}
+button:active {
+    background-color: grey;
 }
