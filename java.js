@@ -1,9 +1,14 @@
 //Calculator
 let total = 0;
+let operatorCount = 0; //to check if an operator has been clicked
+let decimalCount =0;
+let answerCount = 0 ;
 const display = document.querySelector('.display');
 display.innerHTML = `${total}`;
-let enteredKey;
-let secondEnteredKey;
+let enteredKey ="";
+let secondEnteredKey ="";
+let secondEnteredKeyInt;
+let enteredKeyFloat;
 
 const add = function(firstNumber,secondNumber) {
     let sum = firstNumber + secondNumber;
@@ -56,25 +61,37 @@ keyDivide.addEventListener('click',() =>{
 
 const keyPlus = document.querySelector('#plus-key');
 keyPlus.addEventListener('click',() =>{
-  operatorKey = 'addition';
-  display.innerHTML = "+";
+operatorKey = 'addition';
+display.innerHTML = "+";
+operatorCount += 1;
+decimalCount = decimalCount*0;
 })
 
 //numbers
 const keyOne = document.querySelector('#one-key');
 keyOne.addEventListener('click', () =>
 {
-   if (operatorKey !== undefined)
+   if (operatorKey) //if an operator is clicked for the first time
    {
-      secondEnteredKey = 1;
+      if (operatorCount > 0) //execute anytime an operator is clicked
+       {
+         if (secondEnteredKey) //get and store total once secondEntered is defined
+              { total =  operate(total,operatorKey,secondEnteredKeyInt);}
+          secondEnteredKey = "";
+          answerCount += 1;
+       }
+      operatorCount = operatorCount*0;
+      secondEnteredKey += "1";
+      secondEnteredKeyInt = parseFloat(secondEnteredKey);
       display.innerHTML = `${secondEnteredKey}`;
-      total =  operate(total,operatorKey,secondEnteredKey);
+      
    }
    else if(!operatorKey)
    {
-      enteredKey = 1;
-      total = 1;
-      display.innerHTML = `${enteredKey}`;
+      enteredKey +="1";
+      enteredKeyFloat = parseFloat(enteredKey);
+      total = enteredKeyFloat;
+      display.innerHTML = `${total}`;
    }
 })
 
@@ -83,22 +100,42 @@ keyTwo.addEventListener('click', () =>
 {
    if (operatorKey !== undefined)
    {
-      secondEnteredKey = 2;
+      secondEnteredKey += "2";
+      secondEnteredKeyInt = parseInt(secondEnteredKey);
       display.innerHTML = `${secondEnteredKey}`;
-      total =  operate(total,operatorKey,secondEnteredKey);
    }
    else if(!operatorKey)
    {
-      enteredKey = 2;
-      total = 2;
+      enteredKey +="2";
+      total = parseInt(enteredKey);
       display.innerHTML = `${enteredKey}`;
    }
+   
+})
+
+const keyDecimal = document.querySelector('#point-key');
+keyDecimal.addEventListener('click', () => {
+   if (operatorKey && decimalCount == 0)
+   {
+      secondEnteredKey += ".";
+   }
+   else if(!operatorKey && decimalCount == 0)
+   {
+      enteredKey += ".";
+   }
+   decimalCount += 1;
 })
 
 
 //equal
 const keyEqual = document.querySelector('#equals-key');
 keyEqual.addEventListener('click',() => {
+   if (answerCount > 0) { // do this operation for one new click only
+      total =  operate(total,operatorKey,secondEnteredKeyInt);
+   }
+   answerCount = answerCount*0;
+   //
+   secondEnteredKey = "";
    display.innerHTML = `${total}`;
 })
 
