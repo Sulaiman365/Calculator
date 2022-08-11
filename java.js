@@ -36,7 +36,7 @@ const operate = function(firstNumber,operator,secondNumber) {
      {
         result = add(firstNumber,secondNumber);
      }
-     else if (operator === 'subraction')
+     else if (operator === 'subtraction')
      {
         result = subtract(firstNumber,secondNumber);
      }
@@ -57,6 +57,8 @@ const keyDivide = document.querySelector('#divide-key');
 keyDivide.addEventListener('click',() =>{
   operatorKey = 'division';
   display.innerHTML = "÷";
+  operatorCount += 1;
+decimalCount = decimalCount*0;
 })
 
 const keyPlus = document.querySelector('#plus-key');
@@ -67,24 +69,45 @@ operatorCount += 1;
 decimalCount = decimalCount*0;
 })
 
+const keyMinus = document.querySelector('#minus-key');
+keyMinus.addEventListener('click',() =>{
+operatorKey = 'subtraction';
+display.innerHTML = "-";
+operatorCount += 1;
+decimalCount = decimalCount*0;
+})
+
+const keyTimes = document.querySelector('#multiply-key');
+keyTimes.addEventListener('click',() =>{
+operatorKey = 'multiplication';
+display.innerHTML = "X";
+operatorCount += 1;
+decimalCount = decimalCount*0;
+})
+
 //numbers
+const getAndStoreTotal = function()
+{
+   if (operatorCount > 0) //execute anytime an operator is clicked
+ {
+         if (secondEnteredKey) //get and store total once secondEntered is defined
+              { total =  operate(total,operatorKey,secondEnteredKeyInt);
+               console.log(total);}
+          secondEnteredKey = "";
+          answerCount += 1;
+       }
+}
+
 const keyOne = document.querySelector('#one-key');
 keyOne.addEventListener('click', () =>
 {
    if (operatorKey) //if an operator is clicked for the first time
    {
-      if (operatorCount > 0) //execute anytime an operator is clicked
-       {
-         if (secondEnteredKey) //get and store total once secondEntered is defined
-              { total =  operate(total,operatorKey,secondEnteredKeyInt);}
-          secondEnteredKey = "";
-          answerCount += 1;
-       }
+      getAndStoreTotal ();
       operatorCount = operatorCount*0;
       secondEnteredKey += "1";
       secondEnteredKeyInt = parseFloat(secondEnteredKey);
-      display.innerHTML = `${secondEnteredKey}`;
-      
+      display.innerHTML = `${secondEnteredKey}`;      
    }
    else if(!operatorKey)
    {
@@ -98,19 +121,181 @@ keyOne.addEventListener('click', () =>
 const keyTwo = document.querySelector('#two-key');
 keyTwo.addEventListener('click', () =>
 {
-   if (operatorKey !== undefined)
+   if (operatorKey) //if an operator is clicked for the first time
    {
+      getAndStoreTotal ();
+      operatorCount = operatorCount*0;
       secondEnteredKey += "2";
-      secondEnteredKeyInt = parseInt(secondEnteredKey);
-      display.innerHTML = `${secondEnteredKey}`;
+      secondEnteredKeyInt = parseFloat(secondEnteredKey);
+      display.innerHTML = `${secondEnteredKey}`;      
    }
    else if(!operatorKey)
    {
       enteredKey +="2";
-      total = parseInt(enteredKey);
-      display.innerHTML = `${enteredKey}`;
+      enteredKeyFloat = parseFloat(enteredKey);
+      total = enteredKeyFloat;
+      display.innerHTML = `${total}`;
    }
-   
+})
+
+const keyThree = document.querySelector('#three-key');
+keyThree.addEventListener('click', () =>
+{
+   if (operatorKey) //if an operator is clicked for the first time
+   {
+      getAndStoreTotal();
+      operatorCount = operatorCount*0;
+      secondEnteredKey += "3";
+      secondEnteredKeyInt = parseFloat(secondEnteredKey);
+      display.innerHTML = `${secondEnteredKey}`;      
+   }
+   else if(!operatorKey)
+   {
+      enteredKey +="3";
+      enteredKeyFloat = parseFloat(enteredKey);
+      total = enteredKeyFloat;
+      display.innerHTML = `${total}`;
+   }
+})
+
+const keyFour = document.querySelector('#four-key');
+keyFour.addEventListener('click', () =>
+{
+   if (operatorKey) //if an operator is clicked for the first time
+   {
+      getAndStoreTotal();
+      operatorCount = operatorCount*0;
+      secondEnteredKey += "4";
+      secondEnteredKeyInt = parseFloat(secondEnteredKey);
+      display.innerHTML = `${secondEnteredKey}`;      
+   }
+   else if(!operatorKey)
+   {
+      enteredKey +="4";
+      enteredKeyFloat = parseFloat(enteredKey);
+      total = enteredKeyFloat;
+      display.innerHTML = `${total}`;
+   }
+})
+
+const keyFive = document.querySelector('#five-key');
+keyFive.addEventListener('click', () =>
+{
+   if (operatorKey) //if an operator is clicked for the first time
+   {
+      getAndStoreTotal();
+      operatorCount = operatorCount*0;
+      secondEnteredKey += "5";
+      secondEnteredKeyInt = parseFloat(secondEnteredKey);
+      display.innerHTML = `${secondEnteredKey}`;      
+   }
+   else if(!operatorKey)
+   {
+      enteredKey +="5";
+      enteredKeyFloat = parseFloat(enteredKey);
+      total = enteredKeyFloat;
+      display.innerHTML = `${total}`;
+   }
+})
+
+const keySix = document.querySelector('#six-key');
+keySix.addEventListener('click', () =>
+{
+   if (operatorKey) //if an operator is clicked for the first time
+   {
+      getAndStoreTotal();
+      operatorCount = operatorCount*0;
+      secondEnteredKey += "6";
+      secondEnteredKeyInt = parseFloat(secondEnteredKey);
+      display.innerHTML = `${secondEnteredKey}`;      
+   }
+   else if(!operatorKey)
+   {
+      enteredKey +="6";
+      enteredKeyFloat = parseFloat(enteredKey);
+      total = enteredKeyFloat;
+      display.innerHTML = `${total}`;
+   }
+})
+
+const keySeven = document.querySelector('#seven-key');
+keySeven.addEventListener('click', () =>
+{
+   if (operatorKey) //if an operator is clicked for the first time
+   {
+      getAndStoreTotal();
+      operatorCount = operatorCount*0;
+      secondEnteredKey += "7";
+      secondEnteredKeyInt = parseFloat(secondEnteredKey);
+      display.innerHTML = `${secondEnteredKey}`;      
+   }
+   else if(!operatorKey)
+   {
+      enteredKey +="7";
+      enteredKeyFloat = parseFloat(enteredKey);
+      total = enteredKeyFloat;
+      display.innerHTML = `${total}`;
+   }
+})
+
+const keyEight = document.querySelector('#eight-key');
+keyEight.addEventListener('click', () =>
+{
+   if (operatorKey) //if an operator is clicked for the first time
+   {
+      getAndStoreTotal();
+      operatorCount = operatorCount*0;
+      secondEnteredKey += "8";
+      secondEnteredKeyInt = parseFloat(secondEnteredKey);
+      display.innerHTML = `${secondEnteredKey}`;      
+   }
+   else if(!operatorKey)
+   {
+      enteredKey +="8";
+      enteredKeyFloat = parseFloat(enteredKey);
+      total = enteredKeyFloat;
+      display.innerHTML = `${total}`;
+   }
+})
+
+const keyNine = document.querySelector('#nine-key');
+keyNine.addEventListener('click', () =>
+{
+   if (operatorKey) //if an operator is clicked for the first time
+   {
+      getAndStoreTotal();
+      operatorCount = operatorCount*0;
+      secondEnteredKey += "9";
+      secondEnteredKeyInt = parseFloat(secondEnteredKey);
+      display.innerHTML = `${secondEnteredKey}`;      
+   }
+   else if(!operatorKey)
+   {
+      enteredKey +="9";
+      enteredKeyFloat = parseFloat(enteredKey);
+      total = enteredKeyFloat;
+      display.innerHTML = `${total}`;
+   }
+})
+
+const keyZero = document.querySelector('#zero-key');
+keyZero.addEventListener('click', () =>
+{
+   if (operatorKey) //if an operator is clicked for the first time
+   {
+      getAndStoreTotal();
+      operatorCount = operatorCount*0;
+      secondEnteredKey += "0";
+      secondEnteredKeyInt = parseFloat(secondEnteredKey);
+      display.innerHTML = `${secondEnteredKey}`;      
+   }
+   else if(!operatorKey)
+   {
+      enteredKey +="0";
+      enteredKeyFloat = parseFloat(enteredKey);
+      total = enteredKeyFloat;
+      display.innerHTML = `${total}`;
+   }
 })
 
 const keyDecimal = document.querySelector('#point-key');
@@ -138,5 +323,53 @@ keyEqual.addEventListener('click',() => {
    secondEnteredKey = "";
    display.innerHTML = `${total}`;
 })
+
+//Clear
+const keyClear = document.querySelector('#clear-key');
+keyClear.addEventListener('click',() => {
+   total = 0;
+   operatorKey = "";
+   enteredKey = "";
+   secondEnteredKey = "";
+   enteredKeyFloat = 0*enteredKeyFloat;
+   secondEnteredKeyInt = 0*secondEnteredKeyInt;
+   decimalCount = 0;
+   display.innerHTML = `${total}`;
+})
+
+//percent
+const keyPercent = document.querySelector('#percent-key');
+keyPercent.addEventListener('click',() => {
+   total = 0.01 * total;
+   display.innerHTML = `${total}`;
+})
+
+//delete
+const keyDel = document.querySelector('#del-key');
+keyDel.addEventListener('click',() => {
+   if (!operatorKey)
+   {
+     enteredKey = enteredKey.slice(-enteredKey.length,-1);
+     if (enteredKey === "")
+     {display.innerHTML = `${0}`;
+     enteredKeyFloat = 0;
+     total = enteredKeyFloat;}
+     else {display.innerHTML = `${enteredKey}`;
+     enteredKeyFloat = parseFloat(enteredKey);
+     total = enteredKeyFloat;}
+   }
+   else if (operatorKey)
+   {
+     secondEnteredKey =  secondEnteredKey.slice(-secondEnteredKey.length,-1);
+     if (secondEnteredKey === "")
+     {display.innerHTML = `${0}`;
+      secondEnteredKeyInt = 0;}
+     else {display.innerHTML = `${secondEnteredKey}`;
+     secondEnteredKeyInt = parseFloat(secondEnteredKey);}
+   }
+  
+})
+
+
 
 
