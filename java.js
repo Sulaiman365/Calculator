@@ -107,7 +107,7 @@ keyOne.addEventListener('click', () =>
       operatorCount = operatorCount*0;
       secondEnteredKey += "1";
       secondEnteredKeyInt = parseFloat(secondEnteredKey);
-      display.innerHTML = `${secondEnteredKey}`;      
+      display.innerHTML = `${secondEnteredKeyInt}`;      
    }
    else if(!operatorKey)
    {
@@ -127,7 +127,7 @@ keyTwo.addEventListener('click', () =>
       operatorCount = operatorCount*0;
       secondEnteredKey += "2";
       secondEnteredKeyInt = parseFloat(secondEnteredKey);
-      display.innerHTML = `${secondEnteredKey}`;      
+      display.innerHTML = `${secondEnteredKeyInt}`;      
    }
    else if(!operatorKey)
    {
@@ -147,7 +147,7 @@ keyThree.addEventListener('click', () =>
       operatorCount = operatorCount*0;
       secondEnteredKey += "3";
       secondEnteredKeyInt = parseFloat(secondEnteredKey);
-      display.innerHTML = `${secondEnteredKey}`;      
+      display.innerHTML = `${secondEnteredKeyInt}`;      
    }
    else if(!operatorKey)
    {
@@ -167,7 +167,7 @@ keyFour.addEventListener('click', () =>
       operatorCount = operatorCount*0;
       secondEnteredKey += "4";
       secondEnteredKeyInt = parseFloat(secondEnteredKey);
-      display.innerHTML = `${secondEnteredKey}`;      
+      display.innerHTML = `${secondEnteredKeyInt}`;      
    }
    else if(!operatorKey)
    {
@@ -187,7 +187,7 @@ keyFive.addEventListener('click', () =>
       operatorCount = operatorCount*0;
       secondEnteredKey += "5";
       secondEnteredKeyInt = parseFloat(secondEnteredKey);
-      display.innerHTML = `${secondEnteredKey}`;      
+      display.innerHTML = `${secondEnteredKeyInt}`;      
    }
    else if(!operatorKey)
    {
@@ -207,7 +207,7 @@ keySix.addEventListener('click', () =>
       operatorCount = operatorCount*0;
       secondEnteredKey += "6";
       secondEnteredKeyInt = parseFloat(secondEnteredKey);
-      display.innerHTML = `${secondEnteredKey}`;      
+      display.innerHTML = `${secondEnteredKeyInt}`;      
    }
    else if(!operatorKey)
    {
@@ -227,7 +227,7 @@ keySeven.addEventListener('click', () =>
       operatorCount = operatorCount*0;
       secondEnteredKey += "7";
       secondEnteredKeyInt = parseFloat(secondEnteredKey);
-      display.innerHTML = `${secondEnteredKey}`;      
+      display.innerHTML = `${secondEnteredKeyInt}`;      
    }
    else if(!operatorKey)
    {
@@ -247,7 +247,7 @@ keyEight.addEventListener('click', () =>
       operatorCount = operatorCount*0;
       secondEnteredKey += "8";
       secondEnteredKeyInt = parseFloat(secondEnteredKey);
-      display.innerHTML = `${secondEnteredKey}`;      
+      display.innerHTML = `${secondEnteredKeyInt}`;      
    }
    else if(!operatorKey)
    {
@@ -267,7 +267,7 @@ keyNine.addEventListener('click', () =>
       operatorCount = operatorCount*0;
       secondEnteredKey += "9";
       secondEnteredKeyInt = parseFloat(secondEnteredKey);
-      display.innerHTML = `${secondEnteredKey}`;      
+      display.innerHTML = `${secondEnteredKeyInt}`;      
    }
    else if(!operatorKey)
    {
@@ -287,7 +287,11 @@ keyZero.addEventListener('click', () =>
       operatorCount = operatorCount*0;
       secondEnteredKey += "0";
       secondEnteredKeyInt = parseFloat(secondEnteredKey);
-      display.innerHTML = `${secondEnteredKey}`;      
+      if (isNaN(secondEnteredKeyInt))
+      {display.innerHTML = `${secondEnteredKey}`;}
+      else
+      {display.innerHTML = `${secondEnteredKeyInt}`
+      if (decimalCount > 0) {display.innerHTML = `${secondEnteredKey}`;};}    
    }
    else if(!operatorKey)
    {
@@ -298,19 +302,41 @@ keyZero.addEventListener('click', () =>
    }
 })
 
+//Decimal key
+//const keyDecimal = document.querySelector('#point-key');
+//keyDecimal.addEventListener('click', () => {
+ //  if (operatorKey && decimalCount == 0)
+ //  {
+ //     secondEnteredKey += ".";
+ //  }
+ //  else if(!operatorKey && decimalCount == 0)
+ //  {
+//      enteredKey += ".";
+//   }
+//   decimalCount += 1;
+//})
 const keyDecimal = document.querySelector('#point-key');
 keyDecimal.addEventListener('click', () => {
    if (operatorKey && decimalCount == 0)
    {
+      getAndStoreTotal();
+      operatorCount = operatorCount*0;
       secondEnteredKey += ".";
+      secondEnteredKeyInt = parseFloat(secondEnteredKey);
+      display.innerHTML = `${secondEnteredKey}`; 
    }
    else if(!operatorKey && decimalCount == 0)
    {
-      enteredKey += ".";
+      enteredKey +=".";
+      enteredKeyFloat = parseFloat(enteredKey);
+      total = enteredKeyFloat;
+      if (isNaN(total))
+      {display.innerHTML = `${enteredKey}`;}
+      else
+      {display.innerHTML = `${total}`;}
    }
    decimalCount += 1;
 })
-
 
 //equal
 const keyEqual = document.querySelector('#equals-key');
@@ -337,13 +363,6 @@ keyClear.addEventListener('click',() => {
    display.innerHTML = `${total}`;
 })
 
-//percent
-const keyPercent = document.querySelector('#percent-key');
-keyPercent.addEventListener('click',() => {
-   total = 0.01 * total;
-   display.innerHTML = `${total}`;
-})
-
 //delete
 const keyDel = document.querySelector('#del-key');
 keyDel.addEventListener('click',() => {
@@ -363,9 +382,11 @@ keyDel.addEventListener('click',() => {
      secondEnteredKey =  secondEnteredKey.slice(-secondEnteredKey.length,-1);
      if (secondEnteredKey === "")
      {display.innerHTML = `${0}`;
-      secondEnteredKeyInt = 0;}
-     else {display.innerHTML = `${secondEnteredKey}`;
-     secondEnteredKeyInt = parseFloat(secondEnteredKey);}
+      secondEnteredKeyInt = 0;
+      decimalCount = decimalCount*0}
+     else {
+     secondEnteredKeyInt = parseFloat(secondEnteredKey);
+     display.innerHTML = `${secondEnteredKeyInt}`;}
    }
   
 })
