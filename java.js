@@ -55,34 +55,43 @@ const operate = function(firstNumber,operator,secondNumber) {
 let operatorKey;
 const keyDivide = document.querySelector('#divide-key');
 keyDivide.addEventListener('click',() =>{
+   operatorCount += 1;
+   getAndStoreTotal ();
   operatorKey = 'division';
   display.innerHTML = "÷";
-  operatorCount += 1;
+//  operatorCount += 1;
 decimalCount = decimalCount*0;
 })
 
 const keyPlus = document.querySelector('#plus-key');
 keyPlus.addEventListener('click',() =>{
+   operatorCount += 1;
+   getAndStoreTotal ();
 operatorKey = 'addition';
 display.innerHTML = "+";
-operatorCount += 1;
+//operatorCount += 1;
 decimalCount = decimalCount*0;
 })
 
 const keyMinus = document.querySelector('#minus-key');
 keyMinus.addEventListener('click',() =>{
+   operatorCount += 1;
+   getAndStoreTotal ();
 operatorKey = 'subtraction';
 display.innerHTML = "-";
-operatorCount += 1;
+//operatorCount += 1;
 decimalCount = decimalCount*0;
 })
 
 const keyTimes = document.querySelector('#multiply-key');
 keyTimes.addEventListener('click',() =>{
+   operatorCount += 1;
+   getAndStoreTotal ();
 operatorKey = 'multiplication';
 display.innerHTML = "X";
-operatorCount += 1;
+//operatorCount += 1;
 decimalCount = decimalCount*0;
+//display.innerHTML = `${total}`;
 })
 
 //numbers
@@ -90,12 +99,14 @@ const getAndStoreTotal = function()
 {
    if (operatorCount > 0) //execute anytime an operator is clicked
  {
-         if (secondEnteredKey) //get and store total once secondEntered is defined
-              { total =  operate(total,operatorKey,secondEnteredKeyInt);
+        if (secondEnteredKeyInt) //get and store total once secondEntered is defined
+             { 
+               total =  operate(total,operatorKey,secondEnteredKeyInt);
                console.log(total);}
           secondEnteredKey = "";
-          answerCount += 1;
-       }
+          answerCount += 1; //remove
+          console.log(total);
+      }
 }
 
 const keyOne = document.querySelector('#one-key');
@@ -103,7 +114,7 @@ keyOne.addEventListener('click', () =>
 {
    if (operatorKey) //if an operator is clicked for the first time
    {
-      getAndStoreTotal ();
+      //getAndStoreTotal ();
       operatorCount = operatorCount*0;
       secondEnteredKey += "1";
       secondEnteredKeyInt = parseFloat(secondEnteredKey);
@@ -123,7 +134,7 @@ keyTwo.addEventListener('click', () =>
 {
    if (operatorKey) //if an operator is clicked for the first time
    {
-      getAndStoreTotal ();
+     // getAndStoreTotal ();
       operatorCount = operatorCount*0;
       secondEnteredKey += "2";
       secondEnteredKeyInt = parseFloat(secondEnteredKey);
@@ -143,7 +154,7 @@ keyThree.addEventListener('click', () =>
 {
    if (operatorKey) //if an operator is clicked for the first time
    {
-      getAndStoreTotal();
+      //getAndStoreTotal();
       operatorCount = operatorCount*0;
       secondEnteredKey += "3";
       secondEnteredKeyInt = parseFloat(secondEnteredKey);
@@ -163,7 +174,7 @@ keyFour.addEventListener('click', () =>
 {
    if (operatorKey) //if an operator is clicked for the first time
    {
-      getAndStoreTotal();
+     // getAndStoreTotal();
       operatorCount = operatorCount*0;
       secondEnteredKey += "4";
       secondEnteredKeyInt = parseFloat(secondEnteredKey);
@@ -183,7 +194,7 @@ keyFive.addEventListener('click', () =>
 {
    if (operatorKey) //if an operator is clicked for the first time
    {
-      getAndStoreTotal();
+      //getAndStoreTotal();
       operatorCount = operatorCount*0;
       secondEnteredKey += "5";
       secondEnteredKeyInt = parseFloat(secondEnteredKey);
@@ -203,7 +214,7 @@ keySix.addEventListener('click', () =>
 {
    if (operatorKey) //if an operator is clicked for the first time
    {
-      getAndStoreTotal();
+     // getAndStoreTotal();
       operatorCount = operatorCount*0;
       secondEnteredKey += "6";
       secondEnteredKeyInt = parseFloat(secondEnteredKey);
@@ -223,7 +234,7 @@ keySeven.addEventListener('click', () =>
 {
    if (operatorKey) //if an operator is clicked for the first time
    {
-      getAndStoreTotal();
+     // getAndStoreTotal();
       operatorCount = operatorCount*0;
       secondEnteredKey += "7";
       secondEnteredKeyInt = parseFloat(secondEnteredKey);
@@ -243,7 +254,7 @@ keyEight.addEventListener('click', () =>
 {
    if (operatorKey) //if an operator is clicked for the first time
    {
-      getAndStoreTotal();
+      //getAndStoreTotal();
       operatorCount = operatorCount*0;
       secondEnteredKey += "8";
       secondEnteredKeyInt = parseFloat(secondEnteredKey);
@@ -263,7 +274,7 @@ keyNine.addEventListener('click', () =>
 {
    if (operatorKey) //if an operator is clicked for the first time
    {
-      getAndStoreTotal();
+      //getAndStoreTotal();
       operatorCount = operatorCount*0;
       secondEnteredKey += "9";
       secondEnteredKeyInt = parseFloat(secondEnteredKey);
@@ -283,7 +294,7 @@ keyZero.addEventListener('click', () =>
 {
    if (operatorKey) //if an operator is clicked for the first time
    {
-      getAndStoreTotal();
+      //getAndStoreTotal();
       operatorCount = operatorCount*0;
       secondEnteredKey += "0";
       secondEnteredKeyInt = parseFloat(secondEnteredKey);
@@ -319,7 +330,7 @@ const keyDecimal = document.querySelector('#point-key');
 keyDecimal.addEventListener('click', () => {
    if (operatorKey && decimalCount == 0)
    {
-      getAndStoreTotal();
+     // getAndStoreTotal();
       operatorCount = operatorCount*0;
       secondEnteredKey += ".";
       secondEnteredKeyInt = parseFloat(secondEnteredKey);
@@ -341,9 +352,9 @@ keyDecimal.addEventListener('click', () => {
 //equal
 const keyEqual = document.querySelector('#equals-key');
 keyEqual.addEventListener('click',() => {
-   if (answerCount > 0) { // do this operation for one new click only
-      total =  operate(total,operatorKey,secondEnteredKeyInt);
-   }
+   //if (answerCount > 0) { // do this operation for one new click only
+      total =  operate(total,operatorKey,secondEnteredKeyInt); //remove
+   //}
    answerCount = answerCount*0;
    //
    secondEnteredKey = "";
