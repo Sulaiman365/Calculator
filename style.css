@@ -6,6 +6,7 @@ html{
     display: flex;
     justify-content: center;
     text-align: center;
+    margin-top: 150px;
 }
 #calculator-container
 {
@@ -81,4 +82,15 @@ button
 }
 button:active {
     background-color: grey;
+}
+
+.copywrite
+{
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    color: black;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
 }
