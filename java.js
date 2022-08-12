@@ -334,7 +334,10 @@ keyDecimal.addEventListener('click', () => {
       operatorCount = operatorCount*0;
       secondEnteredKey += ".";
       secondEnteredKeyInt = parseFloat(secondEnteredKey);
-      display.innerHTML = `${secondEnteredKey}`; 
+      if (isNaN(secondEnteredKeyInt))
+      {display.innerHTML = `${0}`;}
+      else
+      {display.innerHTML = `${secondEnteredKeyInt}`;}
    }
    else if(!operatorKey && decimalCount == 0)
    {
@@ -342,7 +345,7 @@ keyDecimal.addEventListener('click', () => {
       enteredKeyFloat = parseFloat(enteredKey);
       total = enteredKeyFloat;
       if (isNaN(total))
-      {display.innerHTML = `${enteredKey}`;}
+      {display.innerHTML = `${0}`;}
       else
       {display.innerHTML = `${total}`;}
    }
@@ -380,7 +383,7 @@ keyDel.addEventListener('click',() => {
    if (!operatorKey)
    {
      enteredKey = enteredKey.slice(-enteredKey.length,-1);
-     if (enteredKey === "")
+     if (enteredKey === "" || isNaN(total))
      {display.innerHTML = `${0}`;
      enteredKeyFloat = 0;
      total = enteredKeyFloat;}
@@ -391,14 +394,15 @@ keyDel.addEventListener('click',() => {
    else if (operatorKey)
    {
      secondEnteredKey =  secondEnteredKey.slice(-secondEnteredKey.length,-1);
-     if (secondEnteredKey === "")
-     {display.innerHTML = `${0}`;
-      secondEnteredKeyInt = 0;
-      decimalCount = decimalCount*0}
-     else {
      secondEnteredKeyInt = parseFloat(secondEnteredKey);
+     if (secondEnteredKey === "" || isNaN(secondEnteredKeyInt))
+     {display.innerHTML = `${0}`;
+      secondEnteredKeyInt = 0;}
+     else {
      display.innerHTML = `${secondEnteredKeyInt}`;}
    }
+   if ( enteredKey.slice(-1) === "." || secondEnteredKey.slice(-1) === "." )
+   {decimalCount = decimalCount*0;}
   
 })
 
